@@ -1,180 +1,104 @@
 <?php
 require_once "Config/Autoload.php";
 Config\Autoload::run();
-
 $template = new Clases\TemplateSite();
-$f = new Clases\PublicFunction();
-$banners = new Clases\Banners();
-$productos = new Clases\Productos();
 $contenidos = new Clases\Contenidos();
-$sliderDesktop = $banners->list(["categoria" => 'main-slider-index', "idioma" => $_SESSION["lang"]], '', '', false);
-$popularCategories = $banners->list(["categoria" => 'popular-categories', "idioma" => $_SESSION["lang"]], 'orden', '', false);
 
-$contenidosIndex = $contenidos->list(["filter" => ["contenidos.area = 'index'"], "images" => true], $_SESSION["lang"]);
-
-$data = [
-    "filter" => ["contenidos.area = 'novedades'"],
+$data_galeria_principal = [
     "images" => true,
-    "order" => "fecha",
-    "limit" => 3
-];
-$novedades = $contenidos->list($data, $_SESSION["lang"]);
+    "filter" => ["contenidos.cod='slide-inicio'"]
 
-#Información de cabecera
-$template->set("title", TITULO);
-$template->set("description", "");
-$template->set("keywords", "");
+];
+$galeria_principal = $contenidos->list($data_galeria_principal, "es", true);
+
+$data_marcas_inicio = [
+    "images" => true,
+    "filter" => ["contenidos.cod='marcas-inicio'"]
+
+];
+$marcas_inicio = $contenidos->list($data_marcas_inicio, "es", true);
+$sobre_nosotros_inicio = $contenidos->list(["filter" => ["contenidos.cod='sobre-nosotros-inicio'"]], 'es', true);
+
+
+$preguntas_frecuentes_inicio=$contenidos->list(["filter" => ["contenidos.cod='preguntas-frecuentes-inicio'"]],'es',true);
 $template->themeInit();
 ?>
 
-<!-- slider area starts -->
-<div class="slider-area pt-105">
-    <?php foreach ($sliderDesktop as $key => $slider) { ?>
-        <div class="single-slide slider-height position-relative">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-5 col-lg-5 col-md-8">
-                        <div class="slider-description margin-slider-description">
-                            <h1 style="margin: 0px !important;"><?= $slider['data']['titulo'] ?></h1>
-                            <p class="pb-30 "><?= $slider['data']['subtitulo'] ?></p>
-                        </div>
-                    </div>
-                    <div class="slider-images ">
-                        <div class="slider-image-bg">
-                            <img src="<?= URL ?>/<?= $slider['image']['ruta'] ?>" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php } ?>
-
-</div>
-<!-- slider area ends -->
-
-<!-- popular category area starts -->
-<div class="popular-category-area pt-110">
-    <div class="container">
-        <div class="section-title text-center pb-45">
-            <h2><?= $popularCategories['0']['category']['titulo'] ?></h2>
-        </div>
-        <div class="row">
-            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
-                <div class="category-img-item first-items position-relative">
-                    <div class="cat-thumb overflow-hidden">
-                        <img src="<?= URL . "/" . $popularCategories['0']['image']['ruta'] ?>" alt="img1">
-                    </div>
-                    <div class="category-texts ">
-                        <h3><a href="<?= $popularCategories['.']['data']['link'] ?>"><?= $popularCategories['0']['data']['titulo'] ?></a></h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
-                <div class="category-img-item second-items position-relative mb-30">
-                    <div class="cat-thumb overflow-hidden">
-                        <img src="<?= URL . "/" . $popularCategories['1']['image']['ruta'] ?>" alt="img2">
-                    </div>
-                    <div class="category-texts position-absolute">
-                        <h3><a href="<?= $popularCategories['1']['data']['link'] ?>"><?= $popularCategories['1']['data']['titulo'] ?></a></h3>
-                    </div>
-                </div>
-
-                <div class="category-img-item third-items position-relative">
-                    <div class="cat-thumb overflow-hidden">
-                        <img src="<?= URL . "/" . $popularCategories['2']['image']['ruta'] ?>" alt="img3">
-                    </div>
-                    <div class="category-texts position-absolute">
-                        <h3><a href="<?= $popularCategories['2']['data']['link'] ?>"><?= $popularCategories['2']['data']['titulo'] ?></a></h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container mt-50">
-    <div class="row">
-        <div class="products-section shop mt-0" style="width: 100%">
-            <div class=" shop_wrapper grid_3">
-                <div class="row grid-products-outstanding" data-url="<?= URL ?>"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="today-deal pt-115">
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
     <div class="container">
         <div class="row">
-            <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12">
-                <div class="deal-details pt-90">
-                    <span><?= $contenidosIndex['dd7203bf47']['data']['subtitulo'] ?></span>
-                    <h2><?= $contenidosIndex['dd7203bf47']['data']['titulo'] ?></h2>
-                    <?= $contenidosIndex['dd7203bf47']['data']['contenido'] ?>
-                    <a class="p-btn position-relative" href="<?= $contenidosIndex['dd7203bf47']['data']['link'] ?>">
-                        <span><?= $_SESSION['lang-txt']['general']['ver_mas'] ?></span>
-                    </a>
+            <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                <h1><?= $galeria_principal["data"]["titulo"] ?></h1>
+                <h2><?= $galeria_principal["data"]["contenido"] ?></h2>
+                <div class="d-flex justify-content-center justify-content-lg-start">
+                    <a href="#about" class="btn-get-started scrollto">Get Started</a>
+                    <a href="<?= $galeria_principal["data"]["link"] ?>" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
                 </div>
             </div>
-            <div class="col-xl-7 col-lg-6 col-md-6 col-sm-12">
-                <div class="today-deal-img deal-img-position  text-center position-relative">
-                    <img src="<?= $contenidosIndex['dd7203bf47']['images'][0]['url'] ?>" alt="product">
-                    <span class="deal-badge slider-price-badge">
-                        <span><?= $contenidosIndex['dd7203bf47']['data']['keywords'] ?></span>
-                    </span>
-                </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                <img src="<?= $galeria_principal["images"][0]["url"] ?>" class="img-fluid animated" alt="">
             </div>
         </div>
     </div>
-</div>
+</section>
+<!-- End Hero -->
 
-<!-- Today Deal Area Ends -->
-<!-- News Area Start -->
-<div class="news-area pt-115">
-    <div class="container">
-        <div class="section-title text-center pb-45">
-            <h2 class="text-uppercase"><?= $_SESSION['lang-txt']['general']['novedades'] ?></h2>
+<main id="main">
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients section-bg">
+        <div class="container">
+            <div class="row" data-aos="zoom-in">
+                <?php foreach ($marcas_inicio["images"] as $key => $item) { ?>
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                        <img src="<?= $item["url"] ?>" class="img-fluid" alt="<?= $marcas_inicio["data"]["titulo"] ?>">
+                    </div>
+                <?php } ?>
+            </div>
         </div>
-        <div class="row">
-            <?php foreach ($novedades as $novedad) {
-                $link = URL . "/c/" . $novedad['data']["area"] . "/" . $f->normalizar_link($novedad['data']["titulo"]) . "/" . $novedad['data']["cod"] ?>
-                <div class="col-xl-4 col-lg-4 col-md-4">
-                    <div class="news-items mb-30 mb-md-0">
-                        <div class="news-img">
-                            <a href="<?= $link ?>"><img src="<?= $novedad['images'][0]['url'] ?>" alt="<?= $novedad['data']['titulo'] ?>"></a>
-                        </div>
-                        <div class="news-details pt-20">
-                            <div class="news-title pr-50">
-                                <a href="<?= $link ?>"><?= $novedad['data']['titulo'] ?></a>
-                            </div>
-                            <span class="d-block"><?= $novedad['data']['fecha'] ?></span>
-                            <a class="slider-btn d-inline-block position-relative mt-10" href="<?= $link ?>"><?= $_SESSION['lang-txt']['general']['ver_mas'] ?></a>
-                        </div>
+    </section><!-- End Cliens Section -->
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2><?= $sobre_nosotros_inicio["data"]["titulo"] ?></h2>
+            </div>
+
+            <?= $sobre_nosotros_inicio["data"]["contenido"] ?>
+        </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us section-bg">
+        <div class="container-fluid" data-aos="fade-up">
+            <div class="row">
+                <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+                    <div class="content">
+                        <h3><?= $preguntas_frecuentes_inicio["data"]["titulo"] ?></h3>
+                        <p>
+                           <?=$preguntas_frecuentes_inicio["data"]["contenido"] ?>
+                        </p>
+                    </div>
+                    <div class="accordion-list">
+                        <ul>
+                            <li>
+                                <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
+                                    <p>
+                                        Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            <?php } ?>
+                <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("assets/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+            </div>
         </div>
-    </div>
-</div>
-<div class="instagram-area pt-110 pb-120">
-    <div class="container">
-        <div class="section-title text-center">
-            <h2 class="text-uppercase"><?= $contenidosIndex['279e76a3d8']['data']['titulo'] ?></h2>
-            <span><?= $contenidosIndex['279e76a3d8']['data']['subtitulo'] ?></span>
-        </div>
-        <div class="instagram-images d-flex pt-60">
-            <?php foreach ($contenidosIndex['279e76a3d8']['images'] as $imagen) { ?>
-                <div class="insta-imgs position-relative">
-                    <img src="<?= $imagen['url'] ?>" alt="img">
-                </div>
-            <?php } ?>
+    </section><!-- End Why Us Section -->
+</main>
 
-        </div>
-    </div>
-</div>
-
-<?php $template->themeEnd() ?>
-
-<script>
-    $(document).ready(function() {
-        getDataOutstanding();
-    });
-</script>
+<?php
+$template->themeEnd();
+?>

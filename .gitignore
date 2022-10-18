@@ -13,7 +13,7 @@ orders/*
 logs/errorLog.txt
 logs/log.txt
 vendor/
-backup/*
+#backup/*
 .idea/
 .sonarlint/
  

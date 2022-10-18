@@ -1,98 +1,106 @@
-<?php
-$config = new Clases\Config();
-$contenidos = new Clases\Contenidos();
-#Se carga la configuración de email
-$socialData = $config->viewSocial();
-$footer =  $contenidos->list(["filter" => ["contenidos.cod = 'footer'"]], $_SESSION["lang"], true);
-?>
+<!-- ======= Footer ======= -->
+<footer id="footer">
 
-<!-- Footer Area Starts -->
-<footer class="footer-area ">
-  <div class="container">
-    <div class="footer-menu pt-120">
-      <?= $footer["data"]["contenido"] ?>
+  <div class="footer-newsletter">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <h4>Join Our Newsletter</h4>
+          <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+          <form action="" method="post">
+            <input type="email" name="email"><input type="submit" value="Subscribe">
+          </form>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="footer-bottom mt-80">
+
+  <div class="footer-top">
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
-          <div class="copyright mt-15">
-            <p>2021 © Todos los derechos reservados <a href="<?= URL ?>" target="_blank"><?= TITULO ?></a>.
-              Desarrollado por <a href="https://www.estudiorochayasoc.com" target="_blank">Estudio Rocha & Asociados</a>
-            </p>
-          </div>
+
+        <div class="col-lg-3 col-md-6 footer-contact">
+          <h3>Arsha</h3>
+          <p>
+            A108 Adam Street <br>
+            New York, NY 535022<br>
+            United States <br><br>
+            <strong>Phone:</strong> +1 5589 55488 55<br>
+            <strong>Email:</strong> info@example.com<br>
+          </p>
         </div>
-        <div class="col-md-4">
-          <ul class="social-icon text-center mt-15">
-            <?php
-            foreach ($socialData['data'] as $key => $value) {
-              if (!$value) continue;
-              echo  "<li><a class='fs-18 ml-10' href='" . $value . "' target='_blank'><i class='fab fa-" . $key . "'></i></a></li>";
-            }
-            ?>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
           </ul>
         </div>
-      </div>
-    </div>
-  </div>
-</footer>
 
-<!-- first modal -->
-<div class="modal fade theme1 style1" id="quick-view" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form class="add-quantity" id="cart-f" data-url="<?= URL ?>" onsubmit="addToCart('cart-f','','<?= URL ?>', '','');">
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6 mx-auto col-lg-6 mb-5 mb-lg-0">
-              <div id="img-slick"> </div>
-              <div id="img-slick-nav"></div>
-            </div>
-            <div class="col-lg-6">
-              <div class="modal-product-info">
-                <div class="product-head">
-                  <h2 class="title" id="modalPr-titulo"></h2>
-                  <h4 class="sub-title"><span id="modalPr-cod"></span></h4>
-                  <p id="modalPr-desarrollo" class="mt-10 mb-10 fs-16"></p>
-                </div>
-                <div class="product-body">
-                  <span class="product-price text-center" id="modalPr-precio"></span>
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+          </ul>
+        </div>
 
-                </div>
-                <div class="d-flex">
-                  <div class="product-size" id="modalPr-variacion"></div>
-                </div>
-                <div id="modalPr-fav"></div>
-                <div id="modalPr-stock-finish"></div>
-                <div id="modalPr-bulto"></div>
-              </div>
-            </div>
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Our Social Networks</h4>
+          <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+          <div class="social-links mt-3">
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   </div>
-</div>
-<!-- second modal -->
 
-<!-- Scripts Template -->
-<script src="<?= URL ?>/assets/theme/js/vendor/modernizr-3.11.2.min.js"></script>
-<script src="<?= URL ?>/assets/theme/js/vendor/bootstrap.min.js"></script>
-<script src="<?= URL ?>/assets/theme/js/vendor/popper.min.js"></script>
-<script src="<?= URL ?>/assets/theme/js/vendor/jquery-mean-menu.min.js"></script>
-<script src="<?= URL ?>/assets/theme/js/vendor/owl.carousel.min.js"></script>
-<script src="<?= URL ?>/assets/theme/js/vendor/slick.min.js"></script>
-<script src="<?= URL ?>/assets/theme/js/vendor/jquery.magnific-popup.min.js"></script>
-<script src="<?= URL ?>/assets/theme/js/vendor/isotope.min.js"></script>
-<script src="<?= URL ?>/assets/theme/js/vendor/jquery.nice-number.js"></script>
-<script src="<?= URL ?>/assets/theme/js/scripts.js"></script>
-<!-- Fin Scripts Template -->
+  <div class="container footer-bottom clearfix">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </div>
+</footer><!-- End Footer -->
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+
+
+
+
+
+
+<!-- Scripts Theme -->
+<script src="<?= URL ?>/assets/theme/assets/vendor/aos/aos.js"></script>
+<script src="<?= URL ?>/assets/theme/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?= URL ?>/assets/theme/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="<?= URL ?>/assets/theme/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="<?= URL ?>/assets/theme/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="<?= URL ?>/assets/theme/assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="<?= URL ?>/assets/theme/assets/vendor/php-email-form/validate.js"></script>
+<script src="<?= URL ?>/assets/theme/assets/js/main.js"></script>
+<!-- Fin Scripts Theme -->
 
 
 <!-- Scripts CMS -->
@@ -110,14 +118,3 @@ $footer =  $contenidos->list(["filter" => ["contenidos.cod = 'footer'"]], $_SESS
 <script src="<?= URL ?>/assets/js/services/cart.js"></script>
 <script src="<?= URL ?>/assets/js/sticky/sticky-sidebar.min.js"></script>
 <!-- Fin Scripts CMS -->
-
-<script>
-  $(document).ready(function() {
-    <?php if (isset($_SESSION['usuarios']['cod'])) { ?>
-      getDataFavorites();
-    <?php } ?>
-    refreshCart($('body').attr('data-url'));
-    $("price").removeClass("hidden");
-    viewCart($('body').attr('data-url'));
-  });
-</script>

@@ -97,15 +97,13 @@ class TemplateSite
         $this->head();
         include 'assets/inc/header.inc.php';
         echo '</head>';
-        echo '<body data-url="' . URL . '" class="' . $this->body . '">';
-        // echo '<div class="page-wrapper">';
+        echo '<body>';
         include 'assets/inc/nav.inc.php';
     }
 
     private function foot()
     {
         require_once 'assets/inc/checkout/modals.php';
-        // echo '</div>';
         echo '</body>';
         echo '</html>';
     }
@@ -117,7 +115,6 @@ class TemplateSite
         include 'assets/inc/checkout/header.inc.php';
         echo '</head>';
         echo '<body data-url="' . URL . '" class="' . $this->body . '">';
-        // echo '<div class="page-wrapper">';
         include 'assets/inc/checkout/nav.inc.php';
     }
 

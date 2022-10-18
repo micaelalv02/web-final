@@ -78,25 +78,22 @@ if (!empty($marketing['data']['hubspot'])) { ?>
     <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/<?= $marketing['data']['hubspot'] ?>.js"></script>
     <!-- End of HubSpot Embed Code -->
 <?php } ?>
-<link rel="stylesheet" href="<?= URL ?>/assets/theme/css/normalize.css">
-<link rel="stylesheet" href="<?= URL ?>/assets/theme/css/font-awesome.min.css">
-<link rel="stylesheet" href="<?= URL ?>/assets/theme/css/bootstrap.min.css">
-<link rel="stylesheet" href="<?= URL ?>/assets/theme/css/line-awesome.min.css">
-<link rel="stylesheet" href="<?= URL ?>/assets/theme/css/magnific-popup.css">
-<link rel="stylesheet" href="<?= URL ?>/assets/theme/css/animate.css">
-<link rel="stylesheet" href="<?= URL ?>/assets/theme/css/slick.css">
-<link rel="stylesheet" href="<?= URL ?>/assets/theme/css/owl.carousel.min.css">
-<link rel="stylesheet" href="<?= URL ?>/assets/theme/css/jquery.nice-number.css">
-<link rel="stylesheet" href="<?= URL ?>/assets/theme/css/mean-menu.css">
-<link rel="stylesheet" href="<?= URL ?>/assets/theme/css/default.css">
-<link rel="stylesheet" href="<?= URL ?>/assets/theme/style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Styles Theme -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+<link href="<?= URL ?>/assets/theme/assets/vendor/aos/aos.css" rel="stylesheet">
+<link href="<?= URL ?>/assets/theme/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?= URL ?>/assets/theme/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="<?= URL ?>/assets/theme/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="<?= URL ?>/assets/theme/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="<?= URL ?>/assets/theme/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+<link href="<?= URL ?>/assets/theme/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="<?= URL ?>/assets/theme/assets/css/style.css" rel="stylesheet">
+<!-- Fin Styles Theme -->
 
 <!-- Styles CMS -->
 <link rel="stylesheet" href="<?= URL ?>/assets/css/main-rocha.css">
 <link rel="stylesheet" href="<?= URL ?>/assets/css/lightbox.css">
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="<?= URL ?>/assets/css/estilos-rocha.css">
 <link rel="stylesheet" href="<?= URL ?>/assets/css/select2.min.css">
 <link rel="stylesheet" href="<?= URL ?>/assets/css/loading.css">
