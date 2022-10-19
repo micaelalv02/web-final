@@ -16,7 +16,7 @@ $data_inicio = [
 ];
 $inicio = $contenidos->list($data_inicio, 'es');
 
-$galeria_principal=$inicio["slide-inicio"];
+$galeria_principal = $inicio["slide-inicio"];
 //$sobre_nosotros_inicio = $contenidos->list(["filter" => ["contenidos.cod='sobre-nosotros-inicio'"]], 'es', true);
 
 //$preguntas_frecuentes_inicio = $contenidos->list(["images" => true, "filter" => ["contenidos.cod='preguntas-frecuentes-inicio'"]], 'es', true);
@@ -25,6 +25,8 @@ $preguntas_frecuentes = $contenidos->list(["images" => true, "filter" => ["conte
 //$faq_inicio = $preguntas_frecuentes['faq-inicio'];
 //$preguntas_frecuentes_list = $preguntas_frecuentes;
 //unset($preguntas_frecuentes_list['faq-inicio']);
+
+$servicios=$contenidos->list(["filter"=>["contenidos.area='servicios-inicio'"]],'es');
 
 $template->themeInit();
 ?>
@@ -118,6 +120,8 @@ $template->themeInit();
         </div>
     </section><!-- End Why Us Section -->
 </main>
+
+
 
 <?php
 $template->themeEnd();
