@@ -26,7 +26,7 @@ $preguntas_frecuentes = $contenidos->list(["images" => true, "filter" => ["conte
 //$preguntas_frecuentes_list = $preguntas_frecuentes;
 //unset($preguntas_frecuentes_list['faq-inicio']);
 
-$servicios=$contenidos->list(["filter"=>["contenidos.area='servicios-inicio'"]],'es');
+$servicios = $contenidos->list(["filter" => ["contenidos.area='servicios-inicio'"]], 'es');
 
 $template->themeInit();
 ?>
@@ -36,6 +36,7 @@ $template->themeInit();
     <div class="container">
         <div class="row">
             <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                <h4><?= $galeria_principal["data"]["subtitulo"] ?></h4>
                 <h1><?= $galeria_principal["data"]["titulo"] ?></h1>
                 <h2><?= $galeria_principal["data"]["contenido"] ?></h2>
                 <div class="d-flex justify-content-center justify-content-lg-start">
@@ -44,7 +45,7 @@ $template->themeInit();
                 </div>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-                <img src="<?= $galeria_principal["images"][0]["url"] ?>" class="img-fluid animated" alt="">
+                <img src="<?= $galeria_principal["images"][0]["url"] ?>" class="img-fluid animated"  style="width:600px; height:600px" alt="">
             </div>
         </div>
     </div>
@@ -63,7 +64,7 @@ $template->themeInit();
                 <?php } ?>
             </div>
         </div>
-    </section><!-- End Cliens Section -->
+    </section><!-- End Clients Section -->
 
     <!-- ======= About Us Section ======= -->
     <section id="about" class="about">
@@ -73,6 +74,8 @@ $template->themeInit();
             </div>
 
             <?= $inicio["sobre-nosotros-inicio"]["data"]["contenido"] ?>
+
+
         </div>
     </section><!-- End About Us Section -->
 

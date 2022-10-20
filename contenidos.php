@@ -14,7 +14,7 @@ foreach ($get as $key => $get_) {
 
 $area = isset($get['area']) ? $get['area'] : '';
 $pagina = isset($_GET['pagina']) ? $f->antihack_mysqli($_GET['pagina']) : 1;
-$limite = 12;
+$limite = 3;
 $data = [
     "filter" => $filter,
     "images" => true,
@@ -37,42 +37,42 @@ $template->set("imagen", LOGO);
 $template->themeInit();
 ?>
 
-<section id="portfolio" class="portfolio">
+<section id="portfolio" class="portfolio mt-50">
     <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-            <h2>Novedades</h2>
-            <p>Encontra todas las novedades</p>
+            <h2><?= $contenidoData[array_key_first($contenidoData)]['area']["data"]['titulo'] ?></h2>
+            <p><?= $contenidoData[array_key_first($contenidoData)]['area']["data"]['titulo'] ?></p>
         </div>
 
-        <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        <!--<ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
             <li data-filter=".filter-app">App</li>
             <li data-filter=".filter-card">Card</li>
             <li data-filter=".filter-web">Web</li>
-        </ul>
+        </ul>-->
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
             <?php foreach ($contenidoData as $key => $item) {
+                $link = URL . "/c/" . $item["data"]["area"] . "/" .$f->normalizar_link($item["data"]["titulo"]) . "/" . $item["data"]["cod"];
             ?>
-
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                     <div class="portfolio-img">
-                        <img src="<?= URL ?>/assets/theme/assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+                        <img src="<?= $item["images"][0]["url"] ?>" class="img-fluid" alt="<?= $item["data"]["titulo"] ?>">
                     </div>
                     <div class="portfolio-info">
                         <h4><?= $item["data"]["titulo"] ?></h4>
                         <p><?= $item["data"]["subtitulo"] ?> </p>
-                        <a href="<?= $item["images"][0]["url"]?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-                        <a href="<?= $item["data"]["url"] ?>" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        <a href="<?= $item["images"][0]["url"] ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="<?= $item["data"]["titulo"] ?>"><i class="bx bx-plus"></i></a>
+                        <a href="<?= $link ?>" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
                     </div>
                 </div>
             <?php } ?>
         </div>
-
+        <?= $paginador ?>
     </div>
-</section><!-- End Portfolio Section -->
+</section>
 
 
 <?php
